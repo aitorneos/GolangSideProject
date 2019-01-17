@@ -23,9 +23,12 @@ func main() {
     
 	var username = flag.String("username", "aitor", "MSql username")
 	var password = flag.String("password", "123456", "MSql user password")
+	var ip = flag.String("ip", "123456", "MSql db server ip")
+	var port = flag.String("port", "123456", "MSql db server port")
+	
 	flag.Parse()
 	
-    db, err := sql.Open("mysql", *username+ ":" + *password + "@tcp(172.20.2.65:3306)/xplogdb")
+    db, err := sql.Open("mysql", *username+ ":" + *password + "@tcp(" + *ip + ":" + *port + ")/xplogdb")
     
     if err != nil {
         panic(err.Error())
